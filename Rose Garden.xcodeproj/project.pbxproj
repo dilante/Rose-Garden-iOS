@@ -3,19 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8D26300731B9493CB9A74570 /* Pods_Rose_Garden.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CCEF0BC6DBF5658F362D71F /* Pods_Rose_Garden.framework */; };
 		B6432EC624795EFE0043B39C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6432EC524795EFE0043B39C /* AppDelegate.swift */; };
 		B6432EC824795EFE0043B39C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6432EC724795EFE0043B39C /* SceneDelegate.swift */; };
-		B6432ECA24795EFE0043B39C /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6432EC924795EFE0043B39C /* MasterViewController.swift */; };
 		B6432ECC24795EFE0043B39C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6432ECB24795EFE0043B39C /* DetailViewController.swift */; };
 		B6432ECF24795EFE0043B39C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6432ECD24795EFE0043B39C /* Main.storyboard */; };
 		B6432ED124795F090043B39C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6432ED024795F090043B39C /* Assets.xcassets */; };
 		B6432ED424795F090043B39C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6432ED224795F090043B39C /* LaunchScreen.storyboard */; };
 		B6432EDC2479AC550043B39C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6432EDB2479AC540043B39C /* GoogleService-Info.plist */; };
+		B6432EDE2479B0480043B39C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6432EDD2479B0480043B39C /* LoginViewController.swift */; };
+		B6432EE02479B2390043B39C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6432EDF2479B2390043B39C /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,13 +24,14 @@
 		B6432EC224795EFD0043B39C /* Rose Garden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rose Garden.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6432EC524795EFE0043B39C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6432EC724795EFE0043B39C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B6432EC924795EFE0043B39C /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		B6432ECB24795EFE0043B39C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B6432ECE24795EFE0043B39C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B6432ED024795F090043B39C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6432ED324795F090043B39C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6432ED524795F090043B39C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6432EDB2479AC540043B39C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B6432EDD2479B0480043B39C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B6432EDF2479B2390043B39C /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		BED9D5690AEDE925A1764239 /* Pods-Rose Garden.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rose Garden.debug.xcconfig"; path = "Target Support Files/Pods-Rose Garden/Pods-Rose Garden.debug.xcconfig"; sourceTree = "<group>"; };
 		CB66700020998C68B349093C /* Pods-Rose Garden.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rose Garden.release.xcconfig"; path = "Target Support Files/Pods-Rose Garden/Pods-Rose Garden.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,13 +79,14 @@
 			children = (
 				B6432EC524795EFE0043B39C /* AppDelegate.swift */,
 				B6432EC724795EFE0043B39C /* SceneDelegate.swift */,
-				B6432EC924795EFE0043B39C /* MasterViewController.swift */,
+				B6432EDF2479B2390043B39C /* TableViewController.swift */,
 				B6432ECB24795EFE0043B39C /* DetailViewController.swift */,
 				B6432ECD24795EFE0043B39C /* Main.storyboard */,
 				B6432EDB2479AC540043B39C /* GoogleService-Info.plist */,
 				B6432ED024795F090043B39C /* Assets.xcassets */,
 				B6432ED224795F090043B39C /* LaunchScreen.storyboard */,
 				B6432ED524795F090043B39C /* Info.plist */,
+				B6432EDD2479B0480043B39C /* LoginViewController.swift */,
 			);
 			path = "Rose Garden";
 			sourceTree = "<group>";
@@ -94,7 +97,6 @@
 				BED9D5690AEDE925A1764239 /* Pods-Rose Garden.debug.xcconfig */,
 				CB66700020998C68B349093C /* Pods-Rose Garden.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -233,8 +235,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6432EC624795EFE0043B39C /* AppDelegate.swift in Sources */,
+				B6432EE02479B2390043B39C /* TableViewController.swift in Sources */,
 				B6432EC824795EFE0043B39C /* SceneDelegate.swift in Sources */,
-				B6432ECA24795EFE0043B39C /* MasterViewController.swift in Sources */,
+				B6432EDE2479B0480043B39C /* LoginViewController.swift in Sources */,
 				B6432ECC24795EFE0043B39C /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
