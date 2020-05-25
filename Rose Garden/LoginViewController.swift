@@ -14,8 +14,6 @@ class LoginViewController: UIViewController {
 
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var codeTextField: UITextField!
     @IBOutlet weak var signInButton: GIDSignInButton!
 
   let showListSegueIndentifier = "ShowListSegue"
@@ -64,35 +62,6 @@ class LoginViewController: UIViewController {
       self.performSegue(withIdentifier: self.showListSegueIndentifier, sender: self)
     }
   }
-
-    @IBAction func pressedGetCode(_ sender: Any) {
-        PhoneAuthProvider.provider().verifyPhoneNumber(phoneTextField.text!, uiDelegate: nil) { (verificationID, error) in
-          if let error = error {
-            print("Error logging in an existing user for phone \(error)")
-            return
-          }
-            print("Code sent, ID is \(String(describing: verificationID))")
-            UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-        }
-    }
-    
-    
-    @IBAction func pressedPhoneLogin(_ sender: Any) {
-        let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
-        let verificationCode = codeTextField.text
-        let credential = PhoneAuthProvider.provider().credential(
-        withVerificationID: verificationID!,
-        verificationCode: verificationCode!)
-        Auth.auth().signIn(with: credential) { (authResult, error) in
-          if let error = error {
-            print("Firebase sign in error! \(error)")
-            return
-          }
-       self.performSegue(withIdentifier: self.showListSegueIndentifier, sender: self)
-        }
-        
-    }
-    
     @IBAction func pressedRosefireLogin(_ sender: Any) {
     Rosefire.sharedDelegate().uiDelegate = self // This should be your view controller
     Rosefire.sharedDelegate().signIn(registryToken: REGISTRY_TOKEN) { (err, result) in

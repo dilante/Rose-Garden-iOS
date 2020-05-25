@@ -59,14 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             let loginVC = GIDSignIn.sharedInstance()?.presentingViewController as! LoginViewController
             loginVC.performSegue(withIdentifier: loginVC.showListSegueIndentifier, sender: loginVC)
         }
-//        Auth.auth().signIn(withCustomToken: result!.token) { (authResult, error) in
-//              if let error = error {
-//                print("Firebase sign in error! \(error)")
-//                return
-//              }
-//              // User is signed in using Firebase!
-//              self.performSegue(withIdentifier: self.showListSegueIndentifier, sender: self)
-//            }
+
         
     }
 
