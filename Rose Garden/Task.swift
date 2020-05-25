@@ -15,6 +15,7 @@ class Task {
   var time: Int
   var id: String?
   var author: String?
+  var stage : Int? = 0
 
 
   init(documentSnapshot: DocumentSnapshot) {
@@ -23,6 +24,8 @@ class Task {
     self.name = data["name"] as! String
     self.day = data["day"] as! Int
     self.time = data["time"] as! Int
+    self.stage = data["stage"] as? Int
     self.author = data["author"] as? String
+    
   }
 }

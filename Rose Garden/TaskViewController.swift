@@ -18,19 +18,23 @@ class TaskViewController: UIViewController {
     var taskRef: CollectionReference!
     var taskListener: ListenerRegistration!
     var authStateListenerHandle: AuthStateDidChangeListenerHandle!
-    var isShowingAllTasks = true
+    //var isShowingAllTasks = false
     var tasks = [Task]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-        navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out",
+        style: UIBarButtonItem.Style.plain,
+        target: self,
+        action: #selector(signOut))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "☰",
                                                                style: UIBarButtonItem.Style.plain,
                                                                target: self,
                                                                action: #selector(showMenu))
         taskRef = Firestore.firestore().collection("Task")
+        update()
     }
     
     @objc func showMenu() {
@@ -42,13 +46,14 @@ class TaskViewController: UIViewController {
                                                 self.showAddTaskDialog()
       })
 
-      alertController.addAction(UIAlertAction(title: self.isShowingAllTasks ? "Show only my tasks" : "Show all tasks",
-                                              style: UIAlertAction.Style.default) { (action) in
-                                                // Toggle the show all vs show mine mode.
-                                                self.isShowingAllTasks = !self.isShowingAllTasks
-                                                // Update the list
-                                                self.startListening()
-      })
+//      alertController.addAction(UIAlertAction(title: self.isShowingAllTasks ? "Show only my tasks" : "Show all tasks",
+//                                              style: UIAlertAction.Style.default) { (action) in
+//                                                // Toggle the show all vs show mine mode.
+//                                                self.isShowingAllTasks = !self.isShowingAllTasks
+//                                                // Update the list
+//                                                self.startListening()
+//                                                self.update()
+//     })
       alertController.addAction(UIAlertAction(title: "Sign Out",
                                               style: UIAlertAction.Style.default) { (action) in
                                                 do {
@@ -64,6 +69,15 @@ class TaskViewController: UIViewController {
       present(alertController, animated: true, completion: nil)
     }
     
+    
+    @objc func signOut(){
+        do {
+          try Auth.auth().signOut()
+        } catch {
+          print("Sign out error")
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
       authStateListenerHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
@@ -76,6 +90,7 @@ class TaskViewController: UIViewController {
           }
           //tableView.reloadData()
           startListening()
+        update()
     }
     func update(){
         for index in collectionView.indexPathsForVisibleItems{
@@ -89,9 +104,9 @@ class TaskViewController: UIViewController {
         taskListener.remove()
       }
       var query = taskRef.order(by: "created", descending: true).limit(to: 50)
-      if (!isShowingAllTasks) {
+     // if (!isShowingAllTasks) {
           query = query.whereField("author", isEqualTo: Auth.auth().currentUser!.uid)
-      }
+      //}
       taskListener = query.addSnapshotListener({ (querySnapshot, error) in
         if let querySnapshot = querySnapshot {
           self.tasks.removeAll()
@@ -141,6 +156,7 @@ class TaskViewController: UIViewController {
                                                   "name": nameTextField.text!,
                                                   "day": Int(dayTextField.text!) ?? 1,
                                                   "time": Int(timeTextField.text!) ?? 10,
+                                                  "stage": 0,
                                                   "created": Timestamp.init(),
                                                   "author": Auth.auth().currentUser!.uid
                                                 ])
